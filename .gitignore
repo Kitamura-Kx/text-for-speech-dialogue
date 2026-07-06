@@ -1,0 +1,5 @@
+models/
+datasets/
+.venv/
+__pycache__/
+*.o[0-9]*

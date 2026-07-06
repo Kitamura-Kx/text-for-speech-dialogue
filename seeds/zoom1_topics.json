@@ -1,0 +1,17 @@
+[
+  {"tag": "zoom1_T01_hobby",      "topic": "最近ハマっている趣味や休日の過ごし方について",        "seed": 1},
+  {"tag": "zoom1_T02_living",     "topic": "最近の物価高と、節約や家事の工夫について",            "seed": 2},
+  {"tag": "zoom1_T03_health",     "topic": "健康づくりや美容で気をつけていることについて",          "seed": 3},
+  {"tag": "zoom1_T04_ceremony",   "topic": "結婚式やお葬式などのマナー、家族の行事について",        "seed": 4},
+  {"tag": "zoom1_T05_relations",  "topic": "恋愛や結婚、人間関係の悩みについて",                  "seed": 5},
+  {"tag": "zoom1_T06_school",     "topic": "学生時代の思い出や、学校のことについて",              "seed": 6},
+  {"tag": "zoom1_T07_internet",   "topic": "サブスクやネットショッピングの使い方について",          "seed": 7},
+  {"tag": "zoom1_T08_gadget",     "topic": "最近の家電やスマートウォッチ、便利な生活アプリについて",  "seed": 8},
+  {"tag": "zoom1_T09_tech",       "topic": "AIやVRなどの新しい技術と、デジタル依存について",        "seed": 9},
+  {"tag": "zoom1_T10_study",      "topic": "勉強や大学での学び、学び直しについて",                "seed": 10},
+  {"tag": "zoom1_T11_money",      "topic": "投資やふるさと納税、老後のお金について",              "seed": 11},
+  {"tag": "zoom1_T12_news",       "topic": "最近のニュースや災害、社会の出来事について",            "seed": 12},
+  {"tag": "zoom1_T13_career",     "topic": "仕事やキャリア、子どもの頃の夢について",              "seed": 13},
+  {"tag": "zoom1_T14_outdoor",    "topic": "アウトドアやスポーツ、運動の習慣について",            "seed": 14},
+  {"tag": "zoom1_T15_travel",     "topic": "旅行や温泉、お出かけの計画について",                  "seed": 15}
+]
