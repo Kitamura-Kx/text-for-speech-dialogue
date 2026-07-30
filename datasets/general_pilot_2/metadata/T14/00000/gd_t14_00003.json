@@ -1,0 +1,59 @@
+{
+  "id": "gd_t14_00003",
+  "fixed_opener": "こんにちは、好きなスポーツや興味のある競技はありますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "20代",
+    "residence": "中部地方の都市部",
+    "family": "配偶者・パートナーと子ども",
+    "occupation": "休職中",
+    "finances": "比較的裕福で余裕がある",
+    "values": "趣味や日々の楽しみを大切にする",
+    "concern": "将来の仕事や生活に漠然とした不安がある",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 42,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "小さな経験",
+    "callback": true,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.31,
+    "gen_temperature": 0.97,
+    "events": [
+      {
+        "kind": "E4",
+        "frac": 0.72
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 55,
+    "base_seed": 4055
+  },
+  "output": {
+    "dialogue_file": "dialogues/T14/00000/gd_t14_00003.jsonl",
+    "raw_file": "raw/T14/gd_t14_00003.txt",
+    "n_turns": 68,
+    "n_chars": 992,
+    "clean": true,
+    "seed_used": 4055,
+    "n_attempts": 1,
+    "continuer_added": 9,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

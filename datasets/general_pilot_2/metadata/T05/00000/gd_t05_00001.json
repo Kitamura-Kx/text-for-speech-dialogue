@@ -1,0 +1,60 @@
+{
+  "id": "gd_t05_00001",
+  "persona": {
+    "gender": "男性",
+    "age": "40代",
+    "residence": "東北地方の都市部",
+    "family": "親と同居",
+    "occupation": "求職中",
+    "finances": "比較的裕福で余裕がある",
+    "values": "趣味や日々の楽しみを大切にする",
+    "concern": "家族やパートナーとの関係に悩んでいる",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 48,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "小さな経験",
+    "callback": false,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.41,
+    "gen_temperature": 0.99,
+    "events": [
+      {
+        "kind": "E4",
+        "frac": 0.39
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 9,
+    "base_seed": 4009
+  },
+  "output": {
+    "dialogue_file": "dialogues/T05/00000/gd_t05_00001.jsonl",
+    "raw_file": "raw/T05/gd_t05_00001.txt",
+    "n_turns": 78,
+    "n_chars": 991,
+    "clean": true,
+    "seed_used": 4009,
+    "n_attempts": 1,
+    "continuer_added": 10,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、恋愛で悩んだことはありますか？"
+}

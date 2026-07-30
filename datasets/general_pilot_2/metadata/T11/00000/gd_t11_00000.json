@@ -1,0 +1,55 @@
+{
+  "id": "gd_t11_00000",
+  "persona": {
+    "gender": "男性",
+    "age": "30代",
+    "residence": "九州地方",
+    "family": "配偶者・パートナーと二人暮らし",
+    "occupation": "自営業",
+    "finances": "生活費にかなり余裕がない",
+    "values": "仕事・学業での成長や達成を重視する",
+    "concern": "趣味や自分のための時間を取れない",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 30,
+    "closing": "no_close",
+    "greeting_interrupt": true,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.37,
+    "gen_temperature": 0.95,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 20,
+    "base_seed": 4020
+  },
+  "output": {
+    "dialogue_file": "dialogues/T11/00000/gd_t11_00000.jsonl",
+    "raw_file": "raw/T11/gd_t11_00000.txt",
+    "n_turns": 68,
+    "n_chars": 972,
+    "clean": true,
+    "seed_used": 4020,
+    "n_attempts": 1,
+    "continuer_added": 11,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、何に1番お金を使っていますか？"
+}

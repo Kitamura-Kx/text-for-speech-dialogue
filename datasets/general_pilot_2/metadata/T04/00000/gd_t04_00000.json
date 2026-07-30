@@ -1,0 +1,65 @@
+{
+  "id": "gd_t04_00000",
+  "persona": {
+    "gender": "男性",
+    "age": "10代後半",
+    "residence": "関東地方の郊外",
+    "family": "三世代で同居",
+    "occupation": "中学生・高校生",
+    "finances": "生活費にかなり余裕がない",
+    "values": "仕事・学業での成長や達成を重視する",
+    "concern": "疲れやストレスがたまっている",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 35,
+    "closing": "abrupt_by_B",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "さっきの〜の話なんですけど",
+    "continuer_target": 0.36,
+    "gen_temperature": 1.0,
+    "events": [
+      {
+        "kind": "E6",
+        "frac": 0.72
+      },
+      {
+        "kind": "E7",
+        "frac": 0.74,
+        "sub": "確認B"
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 6,
+    "base_seed": 4006
+  },
+  "output": {
+    "dialogue_file": "dialogues/T04/00000/gd_t04_00000.jsonl",
+    "raw_file": "raw/T04/gd_t04_00000.txt",
+    "n_turns": 59,
+    "n_chars": 1075,
+    "clean": true,
+    "seed_used": 4006,
+    "n_attempts": 1,
+    "continuer_added": 6,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、家族や親戚のお祝い事はありましたか？"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "gd_t02_00001",
+  "persona": {
+    "gender": "女性",
+    "age": "40代",
+    "residence": "中部地方の都市部",
+    "family": "一人暮らし",
+    "occupation": "公務員",
+    "finances": "生活費にかなり余裕がない",
+    "values": "新しい経験や変化を楽しみたい",
+    "concern": "職場・学校・友人との人間関係に悩んでいる",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 45,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.29,
+    "gen_temperature": 1.0,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 3,
+    "base_seed": 4003
+  },
+  "output": {
+    "dialogue_file": "dialogues/T02/00000/gd_t02_00001.jsonl",
+    "raw_file": "raw/T02/gd_t02_00001.txt",
+    "n_turns": 68,
+    "n_chars": 1326,
+    "clean": true,
+    "seed_used": 4003,
+    "n_attempts": 1,
+    "continuer_added": 7,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、いつもどんな服を着ていますか？"
+}

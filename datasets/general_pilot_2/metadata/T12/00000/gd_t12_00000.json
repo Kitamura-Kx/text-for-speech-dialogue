@@ -1,0 +1,55 @@
+{
+  "id": "gd_t12_00000",
+  "persona": {
+    "gender": "男性",
+    "age": "50代",
+    "residence": "東北地方の郊外",
+    "family": "配偶者・パートナーと子ども",
+    "occupation": "運輸・物流職",
+    "finances": "標準的で大きな不安はない",
+    "values": "新しい経験や変化を楽しみたい",
+    "concern": "仕事や学業が忙しい",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 48,
+    "closing": "abrupt",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.32,
+    "gen_temperature": 0.93,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 22,
+    "base_seed": 4022
+  },
+  "output": {
+    "dialogue_file": "dialogues/T12/00000/gd_t12_00000.jsonl",
+    "raw_file": "raw/T12/gd_t12_00000.txt",
+    "n_turns": 69,
+    "n_chars": 987,
+    "clean": true,
+    "seed_used": 104022,
+    "n_attempts": 2,
+    "continuer_added": 0,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、普段ニュースはご覧になりますか？"
+}

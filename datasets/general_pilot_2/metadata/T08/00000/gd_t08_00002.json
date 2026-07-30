@@ -1,0 +1,59 @@
+{
+  "id": "gd_t08_00002",
+  "fixed_opener": "こんにちは、スマートウォッチって知っていますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "10代後半",
+    "residence": "関東地方の郊外",
+    "family": "親と同居",
+    "occupation": "中学生・高校生",
+    "finances": "比較的裕福で余裕がある",
+    "values": "安定した生活を重視する",
+    "concern": "将来の仕事や生活に漠然とした不安がある",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 28,
+    "closing": "abrupt_by_B",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.32,
+    "gen_temperature": 0.87,
+    "events": [
+      {
+        "kind": "E6",
+        "frac": 0.66
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 30,
+    "base_seed": 4030
+  },
+  "output": {
+    "dialogue_file": "dialogues/T08/00000/gd_t08_00002.jsonl",
+    "raw_file": "raw/T08/gd_t08_00002.txt",
+    "n_turns": 35,
+    "n_chars": 473,
+    "clean": true,
+    "seed_used": 4030,
+    "n_attempts": 1,
+    "continuer_added": 2,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

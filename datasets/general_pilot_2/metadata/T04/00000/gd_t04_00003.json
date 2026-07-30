@@ -1,0 +1,54 @@
+{
+  "id": "gd_t04_00003",
+  "fixed_opener": "こんにちは、何か家庭内のルールはありますか？",
+  "persona": {
+    "gender": "女性",
+    "age": "40代",
+    "residence": "九州地方",
+    "family": "ひとり親として子どもと暮らしている",
+    "occupation": "自営業",
+    "finances": "節約すれば問題なく暮らせる",
+    "values": "家族や身近な人との時間を大切にする",
+    "concern": "睡眠・運動・食事などの生活習慣が乱れている",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 37,
+    "closing": "no_close",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "さっきの〜の話なんですけど",
+    "continuer_target": 0.3,
+    "gen_temperature": 0.86,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 15,
+    "base_seed": 4015
+  },
+  "output": {
+    "dialogue_file": "dialogues/T04/00000/gd_t04_00003.jsonl",
+    "raw_file": "raw/T04/gd_t04_00003.txt",
+    "n_turns": 51,
+    "n_chars": 738,
+    "clean": true,
+    "seed_used": 104015,
+    "n_attempts": 2,
+    "continuer_added": 3,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

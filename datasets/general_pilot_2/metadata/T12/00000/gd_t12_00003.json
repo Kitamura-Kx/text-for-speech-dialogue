@@ -1,0 +1,63 @@
+{
+  "id": "gd_t12_00003",
+  "fixed_opener": "こんにちは、選挙や政治の話題は身近に感じますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "60代以上",
+    "residence": "東北地方の都市部",
+    "family": "成人した子どもと同居",
+    "occupation": "一般会社員",
+    "finances": "標準的で大きな不安はない",
+    "values": "趣味や日々の楽しみを大切にする",
+    "concern": "職場・学校・友人との人間関係に悩んでいる",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 36,
+    "closing": "abrupt_by_B",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "率直な感想",
+    "callback": true,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.39,
+    "gen_temperature": 0.9,
+    "events": [
+      {
+        "kind": "E3",
+        "frac": 0.77
+      },
+      {
+        "kind": "E6",
+        "frac": 0.58
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 47,
+    "base_seed": 4047
+  },
+  "output": {
+    "dialogue_file": "dialogues/T12/00000/gd_t12_00003.jsonl",
+    "raw_file": "raw/T12/gd_t12_00003.txt",
+    "n_turns": 71,
+    "n_chars": 923,
+    "clean": true,
+    "seed_used": 4047,
+    "n_attempts": 1,
+    "continuer_added": 9,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

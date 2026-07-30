@@ -1,0 +1,59 @@
+{
+  "id": "gd_t07_00002",
+  "fixed_opener": "こんにちは、何か音楽や動画のサブスクに入っていますか？",
+  "persona": {
+    "gender": "女性",
+    "age": "30代",
+    "residence": "中国・四国地方",
+    "family": "高齢の親を支えながら同居",
+    "occupation": "接客・サービス職",
+    "finances": "標準的で大きな不安はない",
+    "values": "お金や将来への備えを重視する",
+    "concern": "特に大きな悩みはない",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 44,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.43,
+    "gen_temperature": 0.94,
+    "events": [
+      {
+        "kind": "E5",
+        "frac": 0.75
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 26,
+    "base_seed": 4026
+  },
+  "output": {
+    "dialogue_file": "dialogues/T07/00000/gd_t07_00002.jsonl",
+    "raw_file": "raw/T07/gd_t07_00002.txt",
+    "n_turns": 72,
+    "n_chars": 974,
+    "clean": true,
+    "seed_used": 4026,
+    "n_attempts": 1,
+    "continuer_added": 5,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

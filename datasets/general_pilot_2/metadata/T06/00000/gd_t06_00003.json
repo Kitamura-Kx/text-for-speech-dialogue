@@ -1,0 +1,54 @@
+{
+  "id": "gd_t06_00003",
+  "fixed_opener": "こんにちは、学生時代にしておいた方がいいことは何だと思いますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "60代以上",
+    "residence": "中部地方の郊外",
+    "family": "三世代で同居",
+    "occupation": "接客・サービス職",
+    "finances": "生活費にかなり余裕がない",
+    "values": "一人の時間や自分らしさを大切にする",
+    "concern": "特に大きな悩みはない",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 29,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.32,
+    "gen_temperature": 0.91,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 23,
+    "base_seed": 4023
+  },
+  "output": {
+    "dialogue_file": "dialogues/T06/00000/gd_t06_00003.jsonl",
+    "raw_file": "raw/T06/gd_t06_00003.txt",
+    "n_turns": 40,
+    "n_chars": 729,
+    "clean": true,
+    "seed_used": 4023,
+    "n_attempts": 1,
+    "continuer_added": 6,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

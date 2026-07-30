@@ -1,0 +1,54 @@
+{
+  "id": "gd_t12_00002",
+  "fixed_opener": "こんにちは、現在の政治に対してどのような印象を持っていますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "50代",
+    "residence": "関東地方の郊外",
+    "family": "配偶者・パートナーと二人暮らし",
+    "occupation": "公務員",
+    "finances": "生活費にかなり余裕がない",
+    "values": "安定した生活を重視する",
+    "concern": "疲れやストレスがたまっている",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 44,
+    "closing": "normal",
+    "greeting_interrupt": true,
+    "a_shares": true,
+    "a_share_mode": "個人的な好み",
+    "callback": true,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.31,
+    "gen_temperature": 0.95,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 46,
+    "base_seed": 4046
+  },
+  "output": {
+    "dialogue_file": "dialogues/T12/00000/gd_t12_00002.jsonl",
+    "raw_file": "raw/T12/gd_t12_00002.txt",
+    "n_turns": 72,
+    "n_chars": 1247,
+    "clean": true,
+    "seed_used": 4046,
+    "n_attempts": 1,
+    "continuer_added": 0,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

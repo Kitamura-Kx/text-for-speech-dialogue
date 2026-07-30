@@ -1,0 +1,59 @@
+{
+  "id": "gd_t13_00003",
+  "fixed_opener": "こんにちは、仕事と休みのバランスについてどう考えていますか？",
+  "persona": {
+    "gender": "女性",
+    "age": "40代",
+    "residence": "関西地方の郊外",
+    "family": "親と同居",
+    "occupation": "家事・育児を主に担っている",
+    "finances": "節約すれば問題なく暮らせる",
+    "values": "家族や身近な人との時間を大切にする",
+    "concern": "将来の仕事や生活に漠然とした不安がある",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 35,
+    "closing": "normal",
+    "greeting_interrupt": true,
+    "a_shares": true,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.32,
+    "gen_temperature": 0.93,
+    "events": [
+      {
+        "kind": "E4",
+        "frac": 0.53
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 51,
+    "base_seed": 4051
+  },
+  "output": {
+    "dialogue_file": "dialogues/T13/00000/gd_t13_00003.jsonl",
+    "raw_file": "raw/T13/gd_t13_00003.txt",
+    "n_turns": 58,
+    "n_chars": 916,
+    "clean": true,
+    "seed_used": 204051,
+    "n_attempts": 3,
+    "continuer_added": 4,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

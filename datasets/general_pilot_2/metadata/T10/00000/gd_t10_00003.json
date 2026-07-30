@@ -1,0 +1,54 @@
+{
+  "id": "gd_t10_00003",
+  "fixed_opener": "こんにちは、何か勉強したいことはありますか？",
+  "persona": {
+    "gender": "女性",
+    "age": "40代",
+    "residence": "東北地方の郊外",
+    "family": "ひとり親として子どもと暮らしている",
+    "occupation": "公務員",
+    "finances": "比較的裕福で余裕がある",
+    "values": "趣味や日々の楽しみを大切にする",
+    "concern": "家族やパートナーとの関係に悩んでいる",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 36,
+    "closing": "abrupt",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": true,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.29,
+    "gen_temperature": 0.97,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 39,
+    "base_seed": 4039
+  },
+  "output": {
+    "dialogue_file": "dialogues/T10/00000/gd_t10_00003.jsonl",
+    "raw_file": "raw/T10/gd_t10_00003.txt",
+    "n_turns": 51,
+    "n_chars": 776,
+    "clean": true,
+    "seed_used": 4039,
+    "n_attempts": 1,
+    "continuer_added": 1,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

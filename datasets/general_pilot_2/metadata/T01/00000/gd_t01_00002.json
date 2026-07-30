@@ -1,0 +1,59 @@
+{
+  "id": "gd_t01_00002",
+  "fixed_opener": "こんにちは、週末は何をしていましたか？",
+  "persona": {
+    "gender": "女性",
+    "age": "30代",
+    "residence": "関東地方の都心部",
+    "family": "配偶者・パートナーと子ども",
+    "occupation": "製造・技術職",
+    "finances": "比較的裕福で余裕がある",
+    "values": "仕事・学業での成長や達成を重視する",
+    "concern": "趣味や自分のための時間を取れない",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 35,
+    "closing": "abrupt",
+    "greeting_interrupt": true,
+    "a_shares": false,
+    "a_share_mode": "個人的な好み",
+    "callback": true,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.26,
+    "gen_temperature": 0.93,
+    "events": [
+      {
+        "kind": "E3",
+        "frac": 0.38
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 2,
+    "base_seed": 4002
+  },
+  "output": {
+    "dialogue_file": "dialogues/T01/00000/gd_t01_00002.jsonl",
+    "raw_file": "raw/T01/gd_t01_00002.txt",
+    "n_turns": 55,
+    "n_chars": 740,
+    "clean": true,
+    "seed_used": 4002,
+    "n_attempts": 1,
+    "continuer_added": 3,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

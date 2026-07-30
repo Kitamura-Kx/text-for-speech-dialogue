@@ -1,0 +1,55 @@
+{
+  "id": "gd_t08_00000",
+  "persona": {
+    "gender": "女性",
+    "age": "30代",
+    "residence": "関西地方の郊外",
+    "family": "一人暮らし",
+    "occupation": "一般会社員",
+    "finances": "生活費にかなり余裕がない",
+    "values": "趣味や日々の楽しみを大切にする",
+    "concern": "趣味や自分のための時間を取れない",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 43,
+    "closing": "abrupt",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.39,
+    "gen_temperature": 0.96,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 14,
+    "base_seed": 4014
+  },
+  "output": {
+    "dialogue_file": "dialogues/T08/00000/gd_t08_00000.jsonl",
+    "raw_file": "raw/T08/gd_t08_00000.txt",
+    "n_turns": 75,
+    "n_chars": 878,
+    "clean": true,
+    "seed_used": 104014,
+    "n_attempts": 2,
+    "continuer_added": 12,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、何か気になっている家電はありますか？"
+}

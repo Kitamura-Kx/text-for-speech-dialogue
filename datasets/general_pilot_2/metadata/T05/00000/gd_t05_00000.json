@@ -1,0 +1,60 @@
+{
+  "id": "gd_t05_00000",
+  "persona": {
+    "gender": "男性",
+    "age": "30代",
+    "residence": "九州地方",
+    "family": "三世代で同居",
+    "occupation": "求職中",
+    "finances": "標準的で大きな不安はない",
+    "values": "家族や身近な人との時間を大切にする",
+    "concern": "収入・出費・貯金などのお金に不安がある",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 48,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": true,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.37,
+    "gen_temperature": 0.94,
+    "events": [
+      {
+        "kind": "E5",
+        "frac": 0.64
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 8,
+    "base_seed": 4008
+  },
+  "output": {
+    "dialogue_file": "dialogues/T05/00000/gd_t05_00000.jsonl",
+    "raw_file": "raw/T05/gd_t05_00000.txt",
+    "n_turns": 80,
+    "n_chars": 1274,
+    "clean": true,
+    "seed_used": 4008,
+    "n_attempts": 1,
+    "continuer_added": 10,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、恋愛において一番重視していることは何ですか？"
+}

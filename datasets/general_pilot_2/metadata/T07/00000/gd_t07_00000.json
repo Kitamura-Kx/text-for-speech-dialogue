@@ -1,0 +1,60 @@
+{
+  "id": "gd_t07_00000",
+  "persona": {
+    "gender": "女性",
+    "age": "10代後半",
+    "residence": "関東地方の郊外",
+    "family": "三世代で同居",
+    "occupation": "中学生・高校生",
+    "finances": "生活費にかなり余裕がない",
+    "values": "健康的で無理のない生活を重視する",
+    "concern": "特に大きな悩みはない",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 29,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.37,
+    "gen_temperature": 0.87,
+    "events": [
+      {
+        "kind": "E3",
+        "frac": 0.41
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 12,
+    "base_seed": 4012
+  },
+  "output": {
+    "dialogue_file": "dialogues/T07/00000/gd_t07_00000.jsonl",
+    "raw_file": "raw/T07/gd_t07_00000.txt",
+    "n_turns": 44,
+    "n_chars": 646,
+    "clean": true,
+    "seed_used": 4012,
+    "n_attempts": 1,
+    "continuer_added": 2,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、インターネットはよくお使いになりますか？"
+}

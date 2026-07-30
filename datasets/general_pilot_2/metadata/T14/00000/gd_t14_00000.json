@@ -1,0 +1,60 @@
+{
+  "id": "gd_t14_00000",
+  "persona": {
+    "gender": "女性",
+    "age": "30代",
+    "residence": "中国・四国地方",
+    "family": "高齢の親を支えながら同居",
+    "occupation": "接客・サービス職",
+    "finances": "標準的で大きな不安はない",
+    "values": "お金や将来への備えを重視する",
+    "concern": "特に大きな悩みはない",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 44,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.43,
+    "gen_temperature": 0.94,
+    "events": [
+      {
+        "kind": "E5",
+        "frac": 0.75
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 26,
+    "base_seed": 4026
+  },
+  "output": {
+    "dialogue_file": "dialogues/T14/00000/gd_t14_00000.jsonl",
+    "raw_file": "raw/T14/gd_t14_00000.txt",
+    "n_turns": 56,
+    "n_chars": 717,
+    "clean": true,
+    "seed_used": 4026,
+    "n_attempts": 1,
+    "continuer_added": 2,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、外に出て遊んだり体を動かすのは好きですか？"
+}

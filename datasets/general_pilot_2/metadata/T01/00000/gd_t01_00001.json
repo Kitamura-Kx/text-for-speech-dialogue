@@ -1,0 +1,66 @@
+{
+  "id": "gd_t01_00001",
+  "persona": {
+    "gender": "女性",
+    "age": "20代",
+    "residence": "北海道の都市部",
+    "family": "兄弟姉妹と同居",
+    "occupation": "医療・介護職",
+    "finances": "比較的裕福で余裕がある",
+    "values": "お金や将来への備えを重視する",
+    "concern": "趣味や自分のための時間を取れない",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 34,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "小さな経験",
+    "callback": false,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.44,
+    "gen_temperature": 0.9,
+    "events": [
+      {
+        "kind": "E2",
+        "frac": 0.68,
+        "ask": "A ならどうするか聞く"
+      },
+      {
+        "kind": "E7",
+        "frac": 0.84,
+        "sub": "確認A"
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 1,
+    "base_seed": 4001
+  },
+  "output": {
+    "dialogue_file": "dialogues/T01/00000/gd_t01_00001.jsonl",
+    "raw_file": "raw/T01/gd_t01_00001.txt",
+    "n_turns": 75,
+    "n_chars": 1115,
+    "clean": true,
+    "seed_used": 4001,
+    "n_attempts": 1,
+    "continuer_added": 10,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、最近ハマっていることはありますか？"
+}

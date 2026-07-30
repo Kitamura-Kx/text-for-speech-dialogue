@@ -1,0 +1,55 @@
+{
+  "id": "gd_t10_00001",
+  "persona": {
+    "gender": "男性",
+    "age": "20代",
+    "residence": "関東地方の郊外",
+    "family": "兄弟姉妹と同居",
+    "occupation": "医療・介護職",
+    "finances": "生活費にかなり余裕がない",
+    "values": "安定した生活を重視する",
+    "concern": "家族やパートナーとの関係に悩んでいる",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 46,
+    "closing": "abrupt",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "小さな経験",
+    "callback": true,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.43,
+    "gen_temperature": 0.96,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 19,
+    "base_seed": 4019
+  },
+  "output": {
+    "dialogue_file": "dialogues/T10/00000/gd_t10_00001.jsonl",
+    "raw_file": "raw/T10/gd_t10_00001.txt",
+    "n_turns": 84,
+    "n_chars": 1115,
+    "clean": true,
+    "seed_used": 4019,
+    "n_attempts": 1,
+    "continuer_added": 8,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、何か苦手な科目はありますか？"
+}

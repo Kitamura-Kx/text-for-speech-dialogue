@@ -1,0 +1,65 @@
+{
+  "id": "gd_t04_00001",
+  "persona": {
+    "gender": "男性",
+    "age": "20代",
+    "residence": "関西地方の郊外",
+    "family": "一人暮らし",
+    "occupation": "製造・技術職",
+    "finances": "節約すれば問題なく暮らせる",
+    "values": "新しい経験や変化を楽しみたい",
+    "concern": "家族やパートナーとの関係に悩んでいる",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 23,
+    "closing": "no_close",
+    "greeting_interrupt": false,
+    "a_shares": true,
+    "a_share_mode": "率直な感想",
+    "callback": true,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.29,
+    "gen_temperature": 0.98,
+    "events": [
+      {
+        "kind": "E3",
+        "frac": 0.47
+      },
+      {
+        "kind": "E1",
+        "frac": 0.53,
+        "shift": "related"
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 7,
+    "base_seed": 4007
+  },
+  "output": {
+    "dialogue_file": "dialogues/T04/00000/gd_t04_00001.jsonl",
+    "raw_file": "raw/T04/gd_t04_00001.txt",
+    "n_turns": 37,
+    "n_chars": 663,
+    "clean": true,
+    "seed_used": 4007,
+    "n_attempts": 1,
+    "continuer_added": 2,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、お葬式やお墓参りってどんなイメージがありますか？"
+}

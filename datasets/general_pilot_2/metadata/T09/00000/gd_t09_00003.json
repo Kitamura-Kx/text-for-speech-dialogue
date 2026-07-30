@@ -1,0 +1,54 @@
+{
+  "id": "gd_t09_00003",
+  "fixed_opener": "こんにちは、AIにやってほしいこと、頼みたいことってありますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "60代以上",
+    "residence": "北海道の都市部",
+    "family": "高齢の親を支えながら同居",
+    "occupation": "管理職",
+    "finances": "標準的で大きな不安はない",
+    "values": "趣味や日々の楽しみを大切にする",
+    "concern": "趣味や自分のための時間を取れない",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 36,
+    "closing": "no_close",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.41,
+    "gen_temperature": 0.85,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 35,
+    "base_seed": 4035
+  },
+  "output": {
+    "dialogue_file": "dialogues/T09/00000/gd_t09_00003.jsonl",
+    "raw_file": "raw/T09/gd_t09_00003.txt",
+    "n_turns": 69,
+    "n_chars": 1095,
+    "clean": true,
+    "seed_used": 4035,
+    "n_attempts": 1,
+    "continuer_added": 10,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

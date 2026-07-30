@@ -1,0 +1,55 @@
+{
+  "id": "gd_t06_00001",
+  "persona": {
+    "gender": "男性",
+    "age": "60代以上",
+    "residence": "関東地方の都心部",
+    "family": "成人した子どもと同居",
+    "occupation": "エンジニア",
+    "finances": "比較的裕福で余裕がある",
+    "values": "安定した生活を重視する",
+    "concern": "収入・出費・貯金などのお金に不安がある",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 37,
+    "closing": "no_close",
+    "greeting_interrupt": true,
+    "a_shares": false,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "そういえばさっき〜って言ってましたけど",
+    "continuer_target": 0.4,
+    "gen_temperature": 1.0,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 11,
+    "base_seed": 4011
+  },
+  "output": {
+    "dialogue_file": "dialogues/T06/00000/gd_t06_00001.jsonl",
+    "raw_file": "raw/T06/gd_t06_00001.txt",
+    "n_turns": 75,
+    "n_chars": 1313,
+    "clean": true,
+    "seed_used": 4011,
+    "n_attempts": 1,
+    "continuer_added": 11,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、学校に通う意味は何だと思いますか？"
+}

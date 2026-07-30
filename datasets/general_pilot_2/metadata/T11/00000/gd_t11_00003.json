@@ -1,0 +1,54 @@
+{
+  "id": "gd_t11_00003",
+  "fixed_opener": "こんにちは、お金の増やし方に興味はありますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "20代",
+    "residence": "東北地方の都市部",
+    "family": "配偶者・パートナーと二人暮らし",
+    "occupation": "フリーランス",
+    "finances": "比較的裕福で余裕がある",
+    "values": "一人の時間や自分らしさを大切にする",
+    "concern": "将来の仕事や生活に漠然とした不安がある",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 36,
+    "closing": "no_close",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "個人的な好み",
+    "callback": true,
+    "callback_phrase": "さっきの〜の話なんですけど",
+    "continuer_target": 0.44,
+    "gen_temperature": 0.88,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 43,
+    "base_seed": 4043
+  },
+  "output": {
+    "dialogue_file": "dialogues/T11/00000/gd_t11_00003.jsonl",
+    "raw_file": "raw/T11/gd_t11_00003.txt",
+    "n_turns": 90,
+    "n_chars": 1252,
+    "clean": true,
+    "seed_used": 4043,
+    "n_attempts": 1,
+    "continuer_added": 10,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

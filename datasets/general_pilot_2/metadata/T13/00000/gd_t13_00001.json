@@ -1,0 +1,60 @@
+{
+  "id": "gd_t13_00001",
+  "persona": {
+    "gender": "女性",
+    "age": "20代",
+    "residence": "東北地方の都市部",
+    "family": "親と同居",
+    "occupation": "公務員",
+    "finances": "比較的裕福で余裕がある",
+    "values": "一人の時間や自分らしさを大切にする",
+    "concern": "職場・学校・友人との人間関係に悩んでいる",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 29,
+    "closing": "normal",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.43,
+    "gen_temperature": 1.0,
+    "events": [
+      {
+        "kind": "E3",
+        "frac": 0.63
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 25,
+    "base_seed": 4025
+  },
+  "output": {
+    "dialogue_file": "dialogues/T13/00000/gd_t13_00001.jsonl",
+    "raw_file": "raw/T13/gd_t13_00001.txt",
+    "n_turns": 50,
+    "n_chars": 697,
+    "clean": true,
+    "seed_used": 4025,
+    "n_attempts": 1,
+    "continuer_added": 9,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、何かやってみたい職業はありますか？"
+}

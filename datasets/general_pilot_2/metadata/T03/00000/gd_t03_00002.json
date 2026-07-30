@@ -1,0 +1,60 @@
+{
+  "id": "gd_t03_00002",
+  "fixed_opener": "こんにちは、美容に興味はありますか？",
+  "persona": {
+    "gender": "男性",
+    "age": "50代",
+    "residence": "北海道の都市部",
+    "family": "一人暮らし",
+    "occupation": "フリーランス",
+    "finances": "比較的裕福で余裕がある",
+    "values": "お金や将来への備えを重視する",
+    "concern": "仕事・学業・進路が自分に合っているかわからない",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 25,
+    "closing": "no_close",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "個人的な好み",
+    "callback": false,
+    "callback_phrase": "さっき〜って言ってたじゃないですか",
+    "continuer_target": 0.27,
+    "gen_temperature": 0.85,
+    "events": [
+      {
+        "kind": "E1",
+        "frac": 0.83,
+        "shift": "related"
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 10,
+    "base_seed": 4010
+  },
+  "output": {
+    "dialogue_file": "dialogues/T03/00000/gd_t03_00002.jsonl",
+    "raw_file": "raw/T03/gd_t03_00002.txt",
+    "n_turns": 41,
+    "n_chars": 605,
+    "clean": true,
+    "seed_used": 4010,
+    "n_attempts": 1,
+    "continuer_added": 4,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

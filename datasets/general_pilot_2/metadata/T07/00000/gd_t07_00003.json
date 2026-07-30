@@ -1,0 +1,54 @@
+{
+  "id": "gd_t07_00003",
+  "fixed_opener": "こんにちは、加入しているサブスクをしっかり利用できていますか？",
+  "persona": {
+    "gender": "女性",
+    "age": "40代",
+    "residence": "東北地方の郊外",
+    "family": "三世代で同居",
+    "occupation": "接客・サービス職",
+    "finances": "節約すれば問題なく暮らせる",
+    "values": "安定した生活を重視する",
+    "concern": "収入・出費・貯金などのお金に不安がある",
+    "interest": "普通"
+  },
+  "blueprint": {
+    "n_turns_target": 33,
+    "closing": "no_close",
+    "greeting_interrupt": false,
+    "a_shares": false,
+    "a_share_mode": "小さな経験",
+    "callback": false,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.32,
+    "gen_temperature": 0.92,
+    "events": []
+  },
+  "sampling": {
+    "global_index": 27,
+    "base_seed": 4027
+  },
+  "output": {
+    "dialogue_file": "dialogues/T07/00000/gd_t07_00003.jsonl",
+    "raw_file": "raw/T07/gd_t07_00003.txt",
+    "n_turns": 51,
+    "n_chars": 790,
+    "clean": true,
+    "seed_used": 4027,
+    "n_attempts": 1,
+    "continuer_added": 3,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    }
+  }
+}

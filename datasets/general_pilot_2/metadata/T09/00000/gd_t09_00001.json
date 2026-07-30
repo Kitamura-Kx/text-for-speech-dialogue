@@ -1,0 +1,60 @@
+{
+  "id": "gd_t09_00001",
+  "persona": {
+    "gender": "女性",
+    "age": "60代以上",
+    "residence": "関東地方の都心部",
+    "family": "配偶者・パートナーと二人暮らし",
+    "occupation": "公務員",
+    "finances": "比較的裕福で余裕がある",
+    "values": "健康的で無理のない生活を重視する",
+    "concern": "家族やパートナーとの関係に悩んでいる",
+    "interest": "乗り気"
+  },
+  "blueprint": {
+    "n_turns_target": 42,
+    "closing": "normal",
+    "greeting_interrupt": true,
+    "a_shares": false,
+    "a_share_mode": "率直な感想",
+    "callback": false,
+    "callback_phrase": "〜って言ってたの、あれいいですね",
+    "continuer_target": 0.35,
+    "gen_temperature": 0.86,
+    "events": [
+      {
+        "kind": "E3",
+        "frac": 0.69
+      }
+    ]
+  },
+  "sampling": {
+    "global_index": 17,
+    "base_seed": 4017
+  },
+  "output": {
+    "dialogue_file": "dialogues/T09/00000/gd_t09_00001.jsonl",
+    "raw_file": "raw/T09/gd_t09_00001.txt",
+    "n_turns": 71,
+    "n_chars": 1040,
+    "clean": true,
+    "seed_used": 4017,
+    "n_attempts": 1,
+    "continuer_added": 5,
+    "model_dir": "models/instruct31b",
+    "prompt_version": "general-dialogue-blueprint-v1",
+    "gen_params": {
+      "temperature": 0.9,
+      "temperature_jitter": [
+        0.85,
+        1.0
+      ],
+      "top_p": 0.95,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 1792,
+      "max_retries": 3
+    },
+    "comma_normalized": true
+  },
+  "fixed_opener": "こんにちは、どんな分野のテクノロジーに興味がありますか？"
+}
