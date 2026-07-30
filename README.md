@@ -28,6 +28,47 @@ uv run python gen_dataset_v4.py --model-dir models/instruct31b \
 出力: `dialogues/` (各行 [\"A\"|\"B\",発話] の jsonl・厳密交互) / `raw/` / `manifest/`
 (spec+blueprint+生成条件の全記録) / `config/`。シャード安全・冪等 (既存skip)。
 
+## 汎用15話題版
+
+週末版を残したまま、同じ blueprint・短発話・相づち補充・品質ゲート・リトライ方式を
+15話題へ汎用化した `gen_dataset_general.py` を用意している。ペルソナ候補と固定話題文は
+コードに重複定義せず、次の Markdown spec から直接読み込む。
+
+- `docs/general_dialogue_persona_spec.md`
+- `docs/general_dialogue_topic_spec.md`
+
+標準設定では各話題15,000件、合計225,000件を列挙する。話題内の固定文は順番に均等使用し、
+乗り気度は話題ごとに 6,818件 : 6,818件 : 1,364件とする。
+
+```bash
+# 全15話題、1シャード分
+uv run python gen_dataset_general.py --model-dir models/instruct31b \
+    --out datasets/general_v1 --nshard 64 --shard 0
+
+# 小規模確認（24は全話題の固定文数4/6/8で割り切れる）
+uv run python gen_dataset_general.py --model-dir models/instruct31b \
+    --out datasets/general_pilot --count-per-topic 24 --topics T01,T09
+```
+
+固定文は記載順に巡回する。`--count-per-topic` が固定文数で割り切れる場合は完全均等になり、
+割り切れない小規模パイロットでは先頭の固定文から1件ずつ多く割り当てる。
+
+閲覧・研究発表用に、発話内容を変更せずMarkdownへ変換できる。
+
+```bash
+# 1対話だけ変換
+python3 scripts/dialogue_jsonl_to_markdown.py path/to/dialogue.jsonl
+
+# dialogues以下をディレクトリ構造ごと一括変換
+python3 scripts/dialogue_jsonl_to_markdown.py datasets/general_pilot_2/dialogues \
+    --out datasets/general_pilot_2/markdown
+```
+
+汎用版では各 `dialogues/Txx/<bucket>/<id>.jsonl` に対して、
+`metadata/Txx/<bucket>/<id>.json` を1ファイルずつ保存する。対話JSONLには発話だけを入れ、
+メタデータJSONにはペルソナ、`fixed_opener`、blueprint、seed、品質結果、生成条件を入れる。
+話題ドメイン名、Topic ID、固定文の通し番号は入れない。
+
 ## 出所
 
 0378 dialogue_text_gen リポジトリのコミット 1026c7f9 からのコード抽出 (2026-07-06)。
