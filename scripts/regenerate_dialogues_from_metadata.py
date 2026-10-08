@@ -53,7 +53,7 @@ def main():
 
     print(f"metadata records: {len(records)}", file=sys.stderr)
     model = AutoModelForCausalLM.from_pretrained(
-        args.model_dir, torch_dtype=torch.bfloat16, device_map=args.device_map
+        args.model_dir, dtype=torch.bfloat16, device_map=args.device_map
     )
     processor = AutoProcessor.from_pretrained(args.model_dir)
 
@@ -75,7 +75,7 @@ def main():
                 turns, random.Random(f"cont-{seed}"), bp["continuer_target"],
                 protect_prefix=3 if bp["greeting_interrupt"] else 1,
             )
-            turns = normalize_repeated_commas(turns)
+            turns = normalize_repeated_commas(turns, spec["topic_id"])
             if is_clean_general(turns, spec["topic_id"]) and opener_ok(
                 turns, spec, bp["greeting_interrupt"]
             ):

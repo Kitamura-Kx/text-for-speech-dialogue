@@ -3,7 +3,7 @@
 #PBS -q rt_HG
 #PBS -l select=1:mpiprocs=1
 #PBS -l walltime=2:00:00
-#PBS -N 0378_wkv4_shard
+#PBS -N 0380_wkv4_shard
 #PBS -j oe
 # weekend_v4 テキスト生成(31B) 1シャード分。設計: docs/weekend_v4_design.md
 # -v COUNT,NSHARD,SHARD,OUT で指定。冪等 (既存skip)・削除なし。

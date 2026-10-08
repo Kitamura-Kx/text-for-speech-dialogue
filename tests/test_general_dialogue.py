@@ -9,13 +9,15 @@ from general_dialogue_spec import (
     load_topic_domains,
 )
 from gen_dataset_general import (
-    build_metadata,
+    PROMPT_VERSION, build_metadata, build_prompt,
     has_forbidden_latin,
     make_blueprint,
     metadata_path,
+    normalize_allowed_latin_text,
     normalize_repeated_commas,
     opener_ok,
 )
+from persona_leak_audit import build_judge_prompt, parse_judgement
 
 
 class GeneralDialogueSpecTest(unittest.TestCase):
@@ -77,8 +79,36 @@ class GeneralDialogueSpecTest(unittest.TestCase):
 
     def test_t09_latin_exception(self):
         self.assertFalse(has_forbidden_latin("AIとVRとAR", "T09"))
-        self.assertTrue(has_forbidden_latin("AIとSNS", "T09"))
-        self.assertTrue(has_forbidden_latin("AI", "T08"))
+        self.assertFalse(has_forbidden_latin("AIとSNSとYouTube", "T09"))
+        self.assertFalse(has_forbidden_latin("ＳＮＳとＹｏｕＴｕｂｅ", "T08"))
+        self.assertFalse(has_forbidden_latin("AI", "T08"))
+        self.assertFalse(has_forbidden_latin("URLとICTとDIYとTシャツ", "T08"))
+        self.assertFalse(
+            has_forbidden_latin(
+                "AIとITとBGMとビタミンCとDMとCMとAmazonとWebとOSとGoogleとSwitchとRPG",
+                "T08",
+            )
+        )
+        self.assertTrue(has_forbidden_latin("T細胞", "T08"))
+        self.assertTrue(has_forbidden_latin("C言語", "T08"))
+
+    def test_allowed_latin_is_canonicalized_to_halfwidth(self):
+        self.assertEqual(
+            normalize_allowed_latin_text("ＳＮＳとｙｏｕｔｕｂｅ", "T07"),
+            "SNSとYouTube",
+        )
+        self.assertEqual(
+            normalize_allowed_latin_text("ＡＩとＶＲとＡＲ", "T09"),
+            "AIとVRとAR",
+        )
+        self.assertEqual(
+            normalize_allowed_latin_text("ＵＲＬとｉｃｔとｄｉｙとｔシャツ", "T07"),
+            "URLとICTとDIYとTシャツ",
+        )
+        self.assertEqual(
+            normalize_allowed_latin_text("ビタミンＣとａｍａｚｏｎとｗｅｂ", "T03"),
+            "ビタミンCとAmazonとWeb",
+        )
 
     def test_repeated_commas_are_normalized(self):
         turns = [
@@ -103,6 +133,46 @@ class GeneralDialogueSpecTest(unittest.TestCase):
         self.assertNotIn("topic_index", metadata["sampling"])
         self.assertEqual(metadata["blueprint"], blueprint)
         self.assertEqual(metadata["output"], {"clean": True})
+
+    def test_prompt_keeps_b_persona_hidden_from_a(self):
+        spec = self.specs[0]
+        blueprint, event_texts = make_blueprint(spec, 44)
+        prompt = build_prompt(spec, blueprint, event_texts)
+        self.assertIn("A の共有知識ではない", prompt)
+        self.assertIn("たとえ推測が人物設定と偶然一致しても不可", prompt)
+        self.assertIn("「地元」と言っただけなら地域名は不明", prompt)
+        self.assertIn("「仕事」と言っただけなら職種は不明", prompt)
+        self.assertIn("general-dialogue-blueprint-v2-no-persona-leak", PROMPT_VERSION)
+
+    def test_prompt_allows_canonical_sns_and_youtube(self):
+        spec = self.specs[0]
+        blueprint, event_texts = make_blueprint(spec, 44)
+        prompt = build_prompt(spec, blueprint, event_texts)
+        self.assertIn("Amazon、Web、OS、Google、Switch、RPGだけは表記してよく", prompt)
+
+        t09_spec = next(spec for spec in self.specs if spec["topic_id"] == "T09")
+        blueprint, event_texts = make_blueprint(t09_spec, 44)
+        prompt = build_prompt(t09_spec, blueprint, event_texts)
+        self.assertIn("AI、VR、AR、SNS、YouTube、URL、ICT、DIY、Tシャツ、IT", prompt)
+
+    def test_leak_judge_uses_prefix_and_structured_verdict(self):
+        candidate = {
+            "field_label": "居住地", "persona_value": "北海道の都市部",
+            "a_utterance": "北海道なんですね。",
+            "prefix": [["A", "こんにちは。"], ["B", "旅行が好きです。"],
+                       ["A", "北海道なんですね。"]],
+        }
+        prompt = build_judge_prompt(candidate)
+        self.assertIn("未来の発話", prompt)
+        self.assertIn("北海道の都市部", prompt)
+        parsed = parse_judgement(
+            '{"verdict":"leak","evidence_turns":[],"confidence":0.9,"reason":"根拠なし"}'
+        )
+        self.assertEqual(parsed["verdict"], "leak")
+        gemma_style = parse_judgement(
+            '{"verdict":"grounded","evidence_turns":[B7],"confidence":1.0,"reason":"明示"}'
+        )
+        self.assertEqual(gemma_style["evidence_turns"], [7])
 
 
 if __name__ == "__main__":

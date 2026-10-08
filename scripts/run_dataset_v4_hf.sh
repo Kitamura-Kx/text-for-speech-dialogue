@@ -3,7 +3,7 @@
 #PBS -q rt_HF
 #PBS -l select=1
 #PBS -l walltime=1:00:00
-#PBS -N 0378_wkv4_hf
+#PBS -N 0380_wkv4_hf
 #PBS -j oe
 # weekend_v4 テキスト生成: rt_HF 1ノード = 8GPU で 8シャード並列。
 # -v COUNT,NSHARD,SHARD_BASE,OUT  (このノードは SHARD_BASE..SHARD_BASE+7 を担当)

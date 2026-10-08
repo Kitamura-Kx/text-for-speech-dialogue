@@ -28,13 +28,22 @@ from general_dialogue_spec import (
 )
 
 
-PROMPT_VERSION = "general-dialogue-blueprint-v1"
+PROMPT_VERSION = "general-dialogue-blueprint-v2-no-persona-leak"
 GREETING_INTERRUPT_RATE = 0.30
 NAME_RE = re.compile(r"[ABＡＢ]\s*さん|[〇○△□×✕●▲■◯]")
 LATIN_RE = re.compile(r"[A-Za-zＡ-Ｚａ-ｚ]")
 SCAR_RE = re.compile(r"[、。]\s*の方は|^の方は")
 CONF_RE = re.compile(r"私のことです|私の方の話|自分から振っちゃ|あ、私のこと")
-T09_ALLOWED_LATIN_RE = re.compile(r"AI|VR|AR")
+LATIN_TOKEN_RE = re.compile(r"[A-Za-zＡ-Ｚａ-ｚ]+")
+GLOBAL_ALLOWED_LATIN = {
+    "SNS": "SNS", "YOUTUBE": "YouTube", "URL": "URL", "ICT": "ICT", "DIY": "DIY",
+    "AI": "AI", "IT": "IT", "BGM": "BGM", "DM": "DM", "CM": "CM",
+    "AMAZON": "Amazon", "WEB": "Web", "OS": "OS", "GOOGLE": "Google",
+    "SWITCH": "Switch", "RPG": "RPG",
+}
+T09_ALLOWED_LATIN = {"VR": "VR", "AR": "AR"}
+T_SHIRT_RE = re.compile(r"[TＴtｔ]シャツ", re.IGNORECASE)
+VITAMIN_C_RE = re.compile(r"ビタミン[CＣcｃ]", re.IGNORECASE)
 REPEATED_COMMA_RE = re.compile(r"、{2,}")
 TERM_PUNCT = ("。", "！", "？", "!", "?")
 PUNCT_RE = re.compile(r"[、。．，！？!?・…\s]")
@@ -116,10 +125,28 @@ def trim_incomplete_tail(turns, min_turns=6):
     return turns
 
 
-def normalize_repeated_commas(turns):
-    """連続読点を1個へ統一し、読点と文末記号の不自然な重なりも除く。"""
+def normalize_allowed_latin_text(text: str, topic_id: str | None = None) -> str:
+    """許可英字だけを半角の規定表記へ統一する。その他の文字は変更しない。"""
+    import unicodedata
+
+    allowed = dict(GLOBAL_ALLOWED_LATIN)
+    if topic_id == "T09":
+        allowed.update(T09_ALLOWED_LATIN)
+
+    def replace(match: re.Match) -> str:
+        normalized = unicodedata.normalize("NFKC", match.group(0))
+        return allowed.get(normalized.upper(), match.group(0))
+
+    text = T_SHIRT_RE.sub("Tシャツ", text)
+    text = VITAMIN_C_RE.sub("ビタミンC", text)
+    return LATIN_TOKEN_RE.sub(replace, text)
+
+
+def normalize_repeated_commas(turns, topic_id=None):
+    """読点と許可英字表記を正規化する。"""
     normalized = []
     for speaker, utterance in turns:
+        utterance = normalize_allowed_latin_text(utterance, topic_id)
         utterance = REPEATED_COMMA_RE.sub("、", utterance)
         utterance = re.sub(r"、([。！？!?])", r"\1", utterance)
         normalized.append([speaker, utterance])
@@ -127,8 +154,15 @@ def normalize_repeated_commas(turns):
 
 
 def has_forbidden_latin(text: str, topic_id: str) -> bool:
+    text = normalize_allowed_latin_text(text, topic_id)
+    text = text.replace("Tシャツ", "")
+    text = text.replace("ビタミンC", "")
+    text = re.sub(
+        r"SNS|YouTube|URL|ICT|DIY|AI|IT|BGM|DM|CM|Amazon|Web|OS|Google|Switch|RPG",
+        "", text,
+    )
     if topic_id == "T09":
-        text = T09_ALLOWED_LATIN_RE.sub("", text)
+        text = re.sub(r"AI|VR|AR", "", text)
     return bool(LATIN_RE.search(text))
 
 
@@ -385,9 +419,15 @@ def build_prompt(spec, bp, event_texts):
         )
     plan.extend(f"・{text}" for text in event_texts)
     latin_rule = (
-        "・原則として英単語やアルファベットを使わない。ただしこの T09 の対話では、AI、VR、AR だけは表記してよい。"
+        "・原則として英単語やアルファベットを使わない。ただしこの T09 の対話では、"
+        "AI、VR、AR、SNS、YouTube、URL、ICT、DIY、Tシャツ、IT、BGM、ビタミンC、"
+        "DM、CM、Amazon、Web、OS、Google、Switch、RPGだけは表記してよい。"
+        "許可語はここに示した半角表記を使う。"
         if spec["topic_id"] == "T09" else
-        "・英単語やアルファベットを使わない。外来語や略語はカタカナで書く。"
+        "・原則として英単語やアルファベットを使わない。外来語や略語はカタカナで書く。"
+        "ただしSNS、YouTube、URL、ICT、DIY、Tシャツ、AI、IT、BGM、ビタミンC、DM、CM、"
+        "Amazon、Web、OS、Google、Switch、RPGだけは表記してよく、"
+        "ここに示した半角表記を使う。"
     )
     return (
         "二人（AとB）の自然な日本語の雑談を作ってください。\n\n"
@@ -410,6 +450,15 @@ def build_prompt(spec, bp, event_texts):
         "今回の会話の設計図（この通りに構成する）:\n"
         + "\n".join(plan) + "\n\n"
         "【A の応答は文脈に接地させる】最重要:\n"
+        "・A が知ってよい B の情報は、その時点より前の B の発話で、B 自身が具体的に明かした事実だけ。"
+        "上に記載した B の人物設定は B の発話を作るための内面設定であり、A の共有知識ではない。\n"
+        "・B がまだ明かしていない性別、年齢、居住地、家族構成、職業、経済状況、価値観、悩みを、"
+        "A が知っているように話したり、正しく推測したりしない。たとえ推測が人物設定と偶然一致しても不可。\n"
+        "・曖昧な言葉から人物設定を補完しない。B が「地元」と言っただけなら地域名は不明、"
+        "「仕事」と言っただけなら職種は不明、「家族」と言っただけなら家族構成は不明のままにする。"
+        "必要なら A は『どちらの地域ですか』『どんなお仕事ですか』のように中立的に聞く。\n"
+        "・B が以前に具体的な属性を話していない限り、A は『北海道なんですか』『公務員でしたっけ』"
+        "『お子さんもいるんですね』のような確認をしない。\n"
         "・A の深掘り質問は、B の直前の発話に出た具体的な言葉を拾って聞く。\n"
         "・B がすでに答えたことを聞き直さない。決まり文句の質問を連発しない。\n"
         "・A の感想や共感も B の具体的な話に触れる。B が明かしていない属性を先回りして言わない。\n\n"
@@ -455,6 +504,10 @@ def parse_args():
     ap.add_argument("--max-retries", type=int, default=3)
     ap.add_argument("--overwrite", action="store_true")
     ap.add_argument("--device-map", default="auto")
+    ap.add_argument(
+        "--artifact-tag", default="",
+        help="並行Topicジョブ用。manifest/config名へ付ける英数字・ハイフン・下線のタグ",
+    )
     return ap.parse_args()
 
 
@@ -466,6 +519,8 @@ def main():
 
     if not 0 <= args.shard < args.nshard:
         raise ValueError("--shard は 0 以上 --nshard 未満にする")
+    if args.artifact_tag and not re.fullmatch(r"[A-Za-z0-9_-]+", args.artifact_tag):
+        raise ValueError("--artifact-tag は英数字・ハイフン・下線だけにする")
     persona_options = load_persona_options(args.persona_spec)
     domains = load_topic_domains(args.topic_spec)
     specs_all = enumerate_specs(args.count_per_topic, args.base_seed, persona_options, domains)
@@ -480,7 +535,10 @@ def main():
 
     man_dir = os.path.join(args.out, "manifest")
     os.makedirs(man_dir, exist_ok=True)
-    man_path = os.path.join(man_dir, f"shard_{args.shard:04d}_of_{args.nshard:04d}.jsonl")
+    artifact_prefix = f"{args.artifact_tag}_" if args.artifact_tag else ""
+    man_path = os.path.join(
+        man_dir, f"{artifact_prefix}shard_{args.shard:04d}_of_{args.nshard:04d}.jsonl"
+    )
     gen_params = {
         "temperature": args.temperature, "temperature_jitter": [0.85, 1.0],
         "top_p": args.top_p, "repetition_penalty": args.repetition_penalty,
@@ -490,9 +548,12 @@ def main():
     os.makedirs(cfg_dir, exist_ok=True)
     example = specs_all[0]
     bp0, events0 = make_blueprint(example, args.bp_seed)
-    with open(os.path.join(cfg_dir, f"run_shard_{args.shard:04d}.json"), "w") as f:
+    with open(
+        os.path.join(cfg_dir, f"run_{artifact_prefix}shard_{args.shard:04d}.json"), "w"
+    ) as f:
         json.dump({
             "prompt_version": PROMPT_VERSION, "model_dir": args.model_dir,
+            "artifact_tag": args.artifact_tag,
             "count_per_topic": args.count_per_topic,
             "selected_topics": sorted({s["topic_id"] for s in specs_all}),
             "nshard": args.nshard, "shard": args.shard,
@@ -513,7 +574,7 @@ def main():
     os.makedirs(raw_dir, exist_ok=True)
     print(f"[load] {args.model_dir}", file=sys.stderr)
     model = AutoModelForCausalLM.from_pretrained(
-        args.model_dir, torch_dtype=torch.bfloat16, device_map=args.device_map
+        args.model_dir, dtype=torch.bfloat16, device_map=args.device_map
     )
     processor = AutoProcessor.from_pretrained(args.model_dir)
 
@@ -551,7 +612,7 @@ def main():
                     turns, random.Random(f"cont-{seed_used}"), bp["continuer_target"],
                     protect_prefix=3 if bp["greeting_interrupt"] else 1,
                 )
-                turns = normalize_repeated_commas(turns)
+                turns = normalize_repeated_commas(turns, spec["topic_id"])
                 if is_clean_general(turns, spec["topic_id"]) and opener_ok(
                     turns, spec, bp["greeting_interrupt"]
                 ):

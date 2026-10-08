@@ -457,7 +457,7 @@ def main():
     from transformers import set_seed as _set_seed
     print(f"[load] {args.model_dir}", file=sys.stderr)
     model = AutoModelForCausalLM.from_pretrained(
-        args.model_dir, torch_dtype=torch.bfloat16, device_map=args.device_map)
+        args.model_dir, dtype=torch.bfloat16, device_map=args.device_map)
     processor = AutoProcessor.from_pretrained(args.model_dir)
 
     done = skipped = 0

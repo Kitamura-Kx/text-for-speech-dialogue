@@ -3,7 +3,7 @@
 #PBS -q rt_HG
 #PBS -l select=1:mpiprocs=1
 #PBS -l walltime=2:00:00
-#PBS -N regenerate_general_pilot_2
+#PBS -N 0380_regenerate_general_pilot_2
 #PBS -j oe
 
 set -euo pipefail
